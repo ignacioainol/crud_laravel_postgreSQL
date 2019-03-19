@@ -5,6 +5,10 @@
 	
 	<h2>Usuarios</h2>
 
+	@if (Session::has('message'))
+      <div class="alert alert-info">{{ Session::get('message') }}</div>
+    @endif﻿
+
 	<a class="btn btn-info mb-3" href="{{ route('usuarios.create') }}">Crear</a>
 	
 	<table class="table table-striped">
@@ -34,6 +38,7 @@
 	      <td>{{ $usuario->email }}</td>
 	      <td>{{ $usuario->status }}</td>
 	      <td>{{ $usuario->fecha_nacimiento }}</td>
+	      <td><a class="btn btn-success" href="{{ route('usuarios.edit',$usuario->id) }}"><i class="fas fa-edit"></i></a></td>
 	    </tr>
 	    @endforeach
 

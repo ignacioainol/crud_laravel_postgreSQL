@@ -15,7 +15,7 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuarios::orderBy('id','DESC')->paginate(1);
+        $usuarios = Usuarios::orderBy('id','DESC')->paginate(2);
         return view('usuarios.index',compact('usuarios'));
     }
 
@@ -70,9 +70,9 @@ class UsuariosController extends Controller
      * @param  \App\Usuarios  $usuarios
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usuarios $usuarios)
+    public function edit(Usuarios $usuario)
     {
-        //
+        return view('usuarios.edit',compact('usuario'));
     }
 
     /**
@@ -82,9 +82,12 @@ class UsuariosController extends Controller
      * @param  \App\Usuarios  $usuarios
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuarios $usuarios)
+    public function update(Request $request, Usuarios $usuario)
     {
-        //
+        $usuario->update($request->all());
+
+        Session::flash('message','Usuario actualizado');
+        return redirect()->route('usuarios.index');
     }
 
     /**
