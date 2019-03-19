@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Usuarios;
 use Illuminate\Http\Request;
+use Session;
 
 class UsuariosController extends Controller
 {
@@ -25,7 +26,7 @@ class UsuariosController extends Controller
      */
     public function create()
     {
-        //
+        return view('usuarios.create');
     }
 
     /**
@@ -36,7 +37,20 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombres'          => 'required',
+            'apellido_paterno' => 'required'
+            // 'ap_materno' => 'required',
+            // 'rut'        => 'required',
+            // 'email'      => 'required',
+            // 'status'     => 'required',
+            // 'telefono'   => 'required'
+        ]);
+
+        Usuarios::create($request->all());
+
+        Session::flash('message','Usuario creado con éxito');
+        return redirect()->route('usuarios.index');
     }
 
     /**

@@ -5,7 +5,7 @@
 	
 	<h2>Usuarios</h2>
 
-	<a class="btn btn-info mb-3" href="">Crear</a>
+	<a class="btn btn-info mb-3" href="{{ route('usuarios.create') }}">Crear</a>
 	
 	<table class="table table-striped">
 	  <thead>
