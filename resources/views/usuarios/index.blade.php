@@ -39,6 +39,15 @@
 	      <td>{{ $usuario->status }}</td>
 	      <td>{{ $usuario->fecha_nacimiento }}</td>
 	      <td><a class="btn btn-success" href="{{ route('usuarios.edit',$usuario->id) }}"><i class="fas fa-edit"></i></a></td>
+	      <td>
+	      <form action="{{ route('usuarios.destroy',$usuario->id) }}" method="post">
+	      	@csrf
+	      	@method('DELETE')
+
+	      	<button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+
+	      </form>
+	      </td>
 	    </tr>
 	    @endforeach
 
