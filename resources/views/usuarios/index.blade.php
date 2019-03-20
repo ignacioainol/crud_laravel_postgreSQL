@@ -44,7 +44,7 @@
 	      	@csrf
 	      	@method('DELETE')
 
-	      	<button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+	      	<button type="submit" onclick="return confirm('Quieres borrar a este sujeto?')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 
 	      </form>
 	      </td>
